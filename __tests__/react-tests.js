@@ -5,104 +5,107 @@ import { expect } from '@jest/globals';
 
 describe('React unit tests', () => {
   beforeEach(() => {
-    render(<App />);
+    render();
   })
   describe('Homepage tests', () => {
-    it('should display a Create Post button', () => {
-      const createButton = screen.getByText(/create post/i);
+    xit('should display a Create Post button', () => {
+      const createButton = screen.getByText('Create Post');
       expect(createButton).toBeInTheDocument();
     })
-    it('user can click create post and load a create post modal/page', () => {
+    it('user can click create post and load a create post modal/page', async () => {
+      fireEvent.click(screen.getByText('Create Post'))
+      const diff = await screen.getByLabelText('Difficulty');
+      expect(diff).toBeInTheDocument();
+    })
+    xit('should display the top 10 posts', () => {
+      const projectDisplay = screen.findAllByDisplayValue('');
+      expect(projectDisplay).toBeInTheDocument;
+    })
+    xit('should display the number of upvotes for each post', () => {
 
     })
-    it('should display the top 10 posts', () => {
+    xit('user can click into post details page', () => {
 
     })
-    it('should display the number of upvotes for each post', () => {
+    xit('user can click on upvote and downvote buttons', () => {
 
     })
-    it('user can click into post details page', () => {
+    xit('updates upvote and downvote numbers when buttons are clicked', () => {
 
     })
-    it('user can click on upvote and downvote buttons', () => {
+    xit('should display a search input box', () => {
 
     })
-    it('updates upvote and downvote numbers when buttons are clicked', () => {
+    xit('user can enter search text', () => {
 
     })
-    it('should display a search input box', () => {
+    xit('should display a search button', () => {
 
     })
-    it('user can enter search text', () => {
+    xit('user can click search button', () => {
 
     })
-    it('should display a search button', () => {
+    xit('clicking on search button should filter posts', () => {
 
     })
-    it('user can click search button', () => {
+    xit('user can filter by difficulty', () => {
 
     })
-    it('clicking on search button should filter posts', () => {
+    xit('user can filter by LOE', () => {
 
     })
-    it('user can filter by difficulty', () => {
+    xit('user can filter by tech', () => {
 
     })
-    it('user can filter by LOE', () => {
-
-    })
-    it('user can filter by tech', () => {
-
-    })
-    it('shows the LOE, difficulty, and techs for each post', () => {
-
-    })
-  })
-  describe('Create post tests', () => {
-    it('user can save a post and get a confirmation', () => {
-
-    })
-    it('should have difficulty, LOE, and tech tags selectors', () => {
-
-    })
-    it('should have title and description inputs', () => {
-
-    })
-    it('should allow the selection of multiple tech tags', () => {
+    xit('shows the LOE, difficulty, and techs for each post', () => {
 
     })
   })
-  describe('Post details tests', () => {
-    it('shows comments for the post', () => {
+  xdescribe('Create post tests', () => {
+    xit('user can save a post and get a confirmation', () => {
 
     })
-    it('user can click back to home page', () => {
+    xit('should have difficulty, LOE, and tech tags selectors', () => {
 
     })
-    it('shows an add comment button', () => {
+    xit('should have title and description inputs', () => {
 
     })
-    it('user can click upvote and downvote post from within details', () => {
-
-    })
-    it('should access post ID when upvote and downvote are clicked', () => {
-
-    })
-    it('should show LOE, difficulty, and techs for the post', () => {
+    xit('should allow the selection of multiple tech tags', () => {
 
     })
   })
-  describe('Comment tests', () => {
-    it('user can click add comment button and receive a response', () => {
+  xdescribe('Post details tests', () => {
+    xit('shows comments for the post', () => {
 
     })
-    it('should display an input for the comment body', () => {
+    xit('user can click back to home page', () => {
 
     })
-    it('should clear out the input box after comment saves', () => {
+    xit('shows an add comment button', () => {
 
     })
-    it('should rerender and display the new comment after saving', () => {
+    xit('user can click upvote and downvote post from within details', () => {
+
+    })
+    xit('should access post ID when upvote and downvote are clicked', () => {
+
+    })
+    xit('should show LOE, difficulty, and techs for the post', () => {
+
+    })
+  })
+  xdescribe('Comment tests', () => {
+    xit('user can click add comment button and receive a response', () => {
+
+    })
+    xit('should display an input for the comment body', () => {
+
+    })
+    xit('should clear out the input box after comment saves', () => {
+
+    })
+    xit('should rerender and display the new comment after saving', () => {
 
     })
   })
