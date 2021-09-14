@@ -10,6 +10,7 @@
  */
 
 //import action types here
+import { act } from 'react-dom/test-utils';
 import * as types from '../constants/actionTypes';
 
 const initialState = {
@@ -42,6 +43,29 @@ const projectsReducer = (state = initialState, action) => {
         ...state,
         projectList
       };
+    case types.ADD_PROJECT:
+      const newProject = {
+        id: action.payload.id,
+        title: action.payload.title,
+        description: action.payload.description,
+        score: action.payload.score,
+        difficulty: action.payload.difficulty,
+        effortLevel: action.payload.effortLevel,
+        techs: action.payload.techs
+      }
+      projectList = state.projectList.slice();
+      projectList.push(newProject);
+      return {
+        ...state, projectList
+      }
+    case types.DELETE_PROJECT:
+      projectList = state.projectList.slice();
+      projectList.filter(project => project.id !== action.payload);
+      return {
+        ...state, projectList
+      }
+    case types.SEARCH_PROJECTS:
+      projectList = state.projectList.slice();
     default:
       return state;
   }

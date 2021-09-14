@@ -24,8 +24,20 @@ const commentsReducer = (state = initialState, action) => {
     case types.GET_COMMENTS:
       const comments = action.payload;
       commentList = state.commentList.slice();
-
+      comments.forEach(comment => {
+        const newComment = {
+          id: comment.id,
+          text: comment.text,
+        }
+        commentList.push(newComment);
+      })
+      return {
+        ...state,
+        commentList
+      };
     //push markets on market list
+    default:
+      return state;
   }
 };
 
