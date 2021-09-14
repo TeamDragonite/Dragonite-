@@ -11,11 +11,12 @@
 
 import React from 'react';
 import { connect } from 'react-redux';
+import SearchBar from './searchBar';
 
 const TopContainer = (props) => {
   return (
     <div>
-      <p>Test from Top Container!</p>
+      <SearchBar />
     </div>
 
   )

@@ -19,7 +19,7 @@ import { Route, Switch } from 'react-router-dom';
 const MainContainer = (props) => {
   return (
     <div>
-      <p>Test from Main Container!</p>
+      <h1>Unnamed Dragonite App</h1>
       <TopContainer />
 
       <Switch>

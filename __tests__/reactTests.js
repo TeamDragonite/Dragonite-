@@ -1,11 +1,17 @@
+/**
+ * @jest-environment jsdom
+ */
+
 import React from 'react';
 import { render, fireEvent, waitFor, screen } from '@testing-library/react';
 import { expect } from '@jest/globals';
+import App from '../client/App';
+import SearchBar from '../client/containers/top/searchBar';
 
 
 describe('React unit tests', () => {
   beforeEach(() => {
-    render();
+    render(<App />);
   })
   describe('Homepage tests', () => {
     xit('should display a Create Post button', () => {
@@ -18,11 +24,11 @@ describe('React unit tests', () => {
       expect(diff).toBeInTheDocument();
     })
     xit('should display the top 10 posts', () => {
-      const projectDisplay = screen.findAllByDisplayValue('');
+      const projectDisplay = screen.getAllByDisplayValue('');
       expect(projectDisplay).toBeInTheDocument();
     })
     xit('should display the number of upvotes for each post', () => {
-      expect(screen.findByText('Upvotes')).toBeInTheDocument();
+      expect(screen.getByText('Upvotes')).toBeInTheDocument();
     })
     xit('user can click into post details page', () => {
       fireEvent.click(screen.getByText(''))
@@ -33,16 +39,16 @@ describe('React unit tests', () => {
 
     })
     xit('should display a search input box', () => {
-      expect(screen.findByPlaceholderText('Search')).toBeInTheDocument();
+      expect(screen.getByPlaceholderText('search')).toBeInTheDocument();
     })
     xit('user can enter search text', () => {
-      const searchInput = screen.findByPlaceholderText('Search');
+      const searchInput = screen.getByPlaceholderText('search');
       searchInput.focus();
       fireEvent.change(searchInput, { target: { value: 'Test Search' } })
       expect(searchInput.value).toBe('Test Search')
     })
     xit('should display a search button', () => {
-      expect(screen.findByText('Search')).toBeInTheDocument();
+      expect(screen.getByText('Search')).toBeInTheDocument();
     })
     xit('clicking on search button should filter posts', () => {
 
@@ -57,9 +63,9 @@ describe('React unit tests', () => {
 
     })
     xit('shows the LOE, difficulty, and techs for each post', () => {
-      expect(screen.findByText('Difficulty')).toBeInTheDocument();
-      expect(screen.findByText('Techs')).toBeInTheDocument();
-      expect(screen.findByText('Level of Effort')).toBeInTheDocument();
+      expect(screen.getByText('Difficulty')).toBeInTheDocument();
+      expect(screen.getByText('Techs')).toBeInTheDocument();
+      expect(screen.getByText('Level of Effort')).toBeInTheDocument();
     })
   })
   xdescribe('Create post tests', () => {
@@ -67,13 +73,13 @@ describe('React unit tests', () => {
 
     })
     xit('should have difficulty, LOE, and tech tags selectors', () => {
-      expect(screen.findByLabelText('Difficulty')).toBeInTheDocument();
-      expect(screen.findByLabelText('Techs')).toBeInTheDocument();
-      expect(screen.findByLabelText('Level of Effort')).toBeInTheDocument();
+      expect(screen.getByLabelText('Difficulty')).toBeInTheDocument();
+      expect(screen.getByLabelText('Techs')).toBeInTheDocument();
+      expect(screen.getByLabelText('Level of Effort')).toBeInTheDocument();
     })
     xit('should have title and description inputs', () => {
-      expect(screen.findByLabelText('Title')).toBeInTheDocument();
-      expect(screen.findByLabelText('Description')).toBeInTheDocument();
+      expect(screen.getByLabelText('Title')).toBeInTheDocument();
+      expect(screen.getByLabelText('Description')).toBeInTheDocument();
     })
     xit('should allow the selection of multiple tech tags', () => {
 
@@ -84,7 +90,7 @@ describe('React unit tests', () => {
 
     })
     xit('shows an add comment button', () => {
-      expect(screen.findByText('Add Comment')).toBeInTheDocument();
+      expect(screen.getByText('Add Comment')).toBeInTheDocument();
     })
     xit('user can click upvote and downvote post from within details', () => {
 
@@ -93,14 +99,14 @@ describe('React unit tests', () => {
 
     })
     xit('should show LOE, difficulty, and techs for the post', () => {
-      expect(screen.findByText('Difficulty')).toBeInTheDocument();
-      expect(screen.findByText('Techs')).toBeInTheDocument();
-      expect(screen.findByText('Level of Effort')).toBeInTheDocument();
+      expect(screen.getByText('Difficulty')).toBeInTheDocument();
+      expect(screen.getByText('Techs')).toBeInTheDocument();
+      expect(screen.getByText('Level of Effort')).toBeInTheDocument();
     })
   })
   xdescribe('Comment tests', () => {
     xit('should display an input for the comment body', () => {
-      expect(screen.findByLabelText('Comment')).toBeInTheDocument();
+      expect(screen.getByLabelText('Comment')).toBeInTheDocument();
     })
     xit('should clear out the input box after comment saves', () => {
 
