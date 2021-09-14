@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "jest --verbose",
+    "test": "jest --verbose --detectOpenHandles",
     "build": "webpack --config ./webpack.config.js",
     "start": "node ./server/server.js",
     "dev": "NODE_ENV=development webpack serve & NODE_ENV=development nodemon ./server/index.js"
@@ -35,6 +35,7 @@
     "webpack-dev-server": "^4.2.0"
   },
   "dependencies": {
+    "dotenv": "^10.0.0",
     "pg": "^8.7.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
