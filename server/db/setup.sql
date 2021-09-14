@@ -18,7 +18,7 @@ CREATE TABLE IF NOT EXISTS projects (
 
 CREATE TABLE IF NOT EXISTS comments (
   id SERIAL PRIMARY KEY,
-  projectId integer REFERENCES projects(id),
+  projectId integer REFERENCES projects(id) NOT NULL,
   text varchar(5000) NOT NULL
 );
 
@@ -29,6 +29,6 @@ CREATE TABLE IF NOT EXISTS techstack (
 
 CREATE TABLE IF NOT EXISTS tags (
   id SERIAL PRIMARY KEY,
-  projectId integer REFERENCES projects(id),
-  techId integer REFERENCES techstack(id)
+  projectId integer REFERENCES projects(id) NOT NULL,
+  techstackId integer REFERENCES techstack(id) NOT NULL
 )
