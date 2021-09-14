@@ -34,9 +34,17 @@ const searchProjects = (searchTerm, projects) => ({
   payload: { searchTerm, projects }, //is this the appropriate payload?
 })
 
-const filterProjects = (diffFilter, effortFilter, techFilter, projects) => ({
-  type: types.FILTER_PROJECTS,
-  payload: { diffFilter, effortFilter, techFilter, projects }, //is this the appropriate payload?
+const filterProjectsByTech = (techList) => ({
+  type: types.FILTER_PROJECTS_BY_TECH,
+  payload: { techList },
+})
+actions.filterProjectsByDifficulty = (difficulty) => ({
+  type: types.FILTER_PROJECTS_BY_DIFFICULTY,
+  payload: difficulty,
+})
+actions.filterProjectsByEffortLevel = (effortLevel) => ({
+  type: types.FILTER_PROJECTS_BY_EFFORT_LEVEL,
+  payload: effortLevel,
 })
 
 const upvoteProject = (projectId) => ({
@@ -116,12 +124,16 @@ actions.searchProjectsThunk = (searchTerm) => dispatch => {
     .catch(err => console.log('error in searchProjectThunk fetch: ', err));
 }
 
-actions.filterProjectsThunk = (diffFilter, effortFilter, techFilter) => dispatch => {
+actions.filterProjectsByTechThunk = (techList) => dispatch => {
   //fetch request to post new project
-  fetch(`/api/projects?difficult=${diffFilter}&effort=${effortFilter}&techs=${techFilter}`)
+  fetch(`/api/filterbytech`, {
+    method: 'POST',
+    body: JSON.stringify({ techList }),
+    headers: { 'Content-Type': 'application/json' },
+  })
     .then(res => res.json)
     .then(data => {
-      dispatch(filterProjects(diffFilter, effortFilter, techFilter, data.rows));
+      dispatch(filterProjectsByTech(techList, data.rows));
     })
     .catch(err => console.log('error in filterProjectThunk fetch: ', err));
 }
