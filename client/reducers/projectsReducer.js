@@ -25,7 +25,25 @@ const projectsReducer = (state = initialState, action) => {
       const projects = action.payload;
       projectList = state.projectList.slice();
 
-    //push markets on market list
+      //push markets on market list
+      projects.forEach(project => {
+        const newProject = {
+          id: project.id,
+          title: project.title,
+          description: project.description,
+          score: project.score,
+          difficulty: project.difficulty,
+          effortLevel: project.effortLevel,
+          techs: project.techs
+        }
+        projectList.push(newProject);
+      })
+      return {
+        ...state,
+        projectList
+      };
+    default:
+      return state;
   }
 };
 

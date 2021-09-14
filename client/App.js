@@ -11,11 +11,14 @@
 
 import React from 'react';
 import MainContainer from './containers/mainContainer';
+import { BrowserRouter } from 'react-router-dom';
 
 const App = (props) => {
   return (
     <div>
-      <MainContainer />
+      <BrowserRouter>
+        <MainContainer />
+      </BrowserRouter>
     </div>
 
   )

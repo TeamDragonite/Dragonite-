@@ -16,7 +16,7 @@ import commentsReducer from "./commentsReducer";
 // combine reducers
 const reducers = combineReducers({
   projects: projectsReducer,
-  comments: commentsReducer,
+  // comments: commentsReducer,
 })
 
 // make the combined reducers available for import by exporting 

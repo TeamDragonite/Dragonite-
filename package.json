@@ -2,12 +2,12 @@
   "name": "dragonite-",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
     "test": "jest --verbose",
-    "build": "webpack --config ./webpack.config.js",
+    "build": "NODE_ENV=production webpack",
     "start": "node ./server/server.js",
-    "dev": "NODE_ENV=development webpack serve & NODE_ENV=development nodemon ./server/index.js"
+    "dev": "NODE_ENV=development webpack serve & NODE_ENV=development nodemon ./server/server.js"
   },
   "repository": {
     "type": "git",
@@ -27,6 +27,7 @@
     "@babel/preset-react": "^7.14.5",
     "@testing-library/react": "^12.1.0",
     "css-loader": "^6.2.0",
+    "html-webpack-plugin": "^5.3.2",
     "jest": "^27.2.0",
     "nodemon": "^2.0.12",
     "redux-devtools-extension": "^2.13.9",
@@ -37,13 +38,18 @@
     "webpack-dev-server": "^4.2.0"
   },
   "dependencies": {
+    "babel-loader": "^8.2.2",
+    "dotenv": "^10.0.0",
+    "dotenv-webpack": "^7.0.3",
+    "express": "^4.17.1",
     "pg": "^8.7.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-redux": "^7.2.5",
-    "react-router": "^5.2.1",
+    "react-router-dom": "^5.3.0",
     "redux": "^4.1.1",
     "redux-thunk": "^2.3.0",
+    "sass": "^1.40.1",
     "webpack": "^5.52.1"
   },
   "babel": {
