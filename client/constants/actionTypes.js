@@ -9,12 +9,12 @@
  * ************************************
  */
 
-export const ADD_POST = "ADD POST";
-export const SEARCH_POSTS = "SEARCH POSTS";
-export const DELETE_POST = "DELETE POST";
-export const GET_POSTS = "GET POSTS"
-export const UPVOTE_POST = "UPVOTE POST";
-export const DOWNVOTE_POST = "DOWNVOTE POST";
+export const ADD_PROJECT = "ADD PROJECT";
+export const SEARCH_PROJECTS = "SEARCH PROJECTS";
+export const DELETE_PROJECT = "DELETE PROJECT";
+export const GET_PROJECTS = "GET PROJECTS"
+export const UPVOTE_PROJECT = "UPVOTE PROJECT";
+export const DOWNVOTE_PROJECT = "DOWNVOTE PROJECT";
 export const GET_COMMENTS = "GET COMMENTS";
 export const ADD_COMMENT = "ADD COMMENT";
 export const DELETE_COMMENT = "DELETE COMMENT";

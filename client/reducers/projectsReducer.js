@@ -1,7 +1,7 @@
 /**
  * ************************************
  *
- * @module  postsReducer
+ * @module  projectsReducer
  * @author
  * @date
  * @description reducer for market data
@@ -14,19 +14,19 @@ import * as types from '../constants/actionTypes';
 
 const initialState = {
   //initial state here
-  postList: [],
+  projectList: [],
 };
 
-const postsReducer = (state = initialState, action) => {
-  let postList;
+const projectsReducer = (state = initialState, action) => {
+  let projectList;
 
   switch (action.type) {
-    case types.UPDATE_POSTS:
-      const posts = action.payload;
-      postList = state.postList.slice();
+    case types.GET_PROJECTS:
+      const projects = action.payload;
+      projectList = state.projectList.slice();
 
     //push markets on market list
   }
 };
 
-export default postsReducer;
+export default projectsReducer;
