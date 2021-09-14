@@ -28,6 +28,7 @@ CREATE TABLE IF NOT EXISTS techstack (
 );
 
 CREATE TABLE IF NOT EXISTS tags (
+  id SERIAL PRIMARY KEY,
   postId integer REFERENCES posts(id),
   techId integer REFERENCES techstack(id)
 )

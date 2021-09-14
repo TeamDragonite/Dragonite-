@@ -15,6 +15,7 @@ router.post('/comments', (req, res) => res.status(200).json(res.locals.createdCo
 
 // tags routes
 router.get('/tags', (req, res) => res.status(200).json(res.locals.tags));
-router.post('/tags', (req, res) => res.status(200).json(res.locals.createdTag));
+router.post('/posts', (req, res) => res.status(200).json(res.locals.createdTag));
+
 
 module.exports = router;
