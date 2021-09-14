@@ -5,22 +5,26 @@ const server = 'http://localhost:3000';
 // const db = require('../server/db/markets');
 
 
-describe("POST /posts", () => {
-  const post = {
+describe("POST /projects", () => {
+  const project = {
     title: "test Title",
     description: "test Description",
-    difficulty: "Hard",
+    difficulty: "hard",
     effortLevel: "1 day",
-    tags: ["javascript"]
   };
 
   describe("when passed Title, Description, Difficulty, LOE, and Tags", () => {
     test("should respond with a 200 status code", async () => {
-      const response = await request(app).post("/posts").send(post);
+      const response = await request(app).post("/projects").send(project);
       expect(response.statusCode).toBe(200);
     }),
     test("response should be created post object", () => {
-      expect(response.body).toEqual(post);
+      expect(response.body).toEqual({
+        title: "test Title",
+        description: "test Description",
+        difficulty: "hard",
+        effortLevel: "1 day",
+      });
     }),
     // ID should be automatically generated
     test("created post object should have an ID of 1", () => {
@@ -32,76 +36,80 @@ describe("POST /posts", () => {
     //set up bad data
     //title is not string
     test("response should be an error when passed wrong type for title", async () => {
-      const response = await request(app).post("/posts").send({...post, title = 1});
+      const response = await request(app).post("/projects").send({...project, title : 1});
       expect(response).toBeInstanceOf(Error);
     })
     //description is not string
     test("response should be an error when passed wrong type for description", async () => {
-      const response = await request(app).post("/posts").send({...post, difficulty = 1});
+      const response = await request(app).post("/projects").send({...project, difficulty : 1});
       expect(response).toBeInstanceOf(Error);
     })
     //difficulty is not string
     test("response should be an error when passed wrong type for difficulty", async () => {
-      const response = await request(app).post("/posts").send({...post, description = 1});
+      const response = await request(app).post("/projects").send({...project, description : 1});
       expect(response).toBeInstanceOf(Error);
     })
     //effortLevel is not string
     test("response should be an error when passed wrong type for effortLevel", async () => {
-      const response = await request(app).post("/posts").send({...post, effortLevel = 1});
-      expect(response).toBeInstanceOf(Error);
-    })
-    //tags is not array
-    test("response should be an error when tags not passed an array", async () => {
-      const response = await request(app).post("/posts").send({...post, tags = "javascript"});
-      expect(response).toBeInstanceOf(Error);
-    })
-    //tags array does not contain strings 
-    test("response should be an error when tags array does not contain string type", async () => {
-      const response = await request(app).post("/posts").send({...post, tags = [1]});
+      const response = await request(app).post("/projects").send({...project, effortLevel : 1});
       expect(response).toBeInstanceOf(Error);
     })
 
     // CHECK IF INCOMPLETE DATA RETURN ERROR
     //missing title
     test("error out when missing title", async () => {
-      const response = await request(app).post("/posts").send({...post, title = null});
+      const response = await request(app).post("/projects").send({...project, title : null});
       expect(response).toBeInstanceOf(Error);
     })
     //missing description
     test("error out when missing description", async () => {
-      const response = await request(app).post("/posts").send({...post, difficulty = null});
+      const response = await request(app).post("/projects").send({...project, difficulty : null});
       expect(response).toBeInstanceOf(Error);
     })
     //missing difficulty
     test("error out when missing difficulty", async () => {
-      const response = await request(app).post("/posts").send({...post, description = null});
+      const response = await request(app).post("/projects").send({...project, description : null});
       expect(response).toBeInstanceOf(Error);
     })
     //missing effort level
     test("error out when missing effortLevel", async () => {
-      const response = await request(app).post("/posts").send({...post, effortLevel = null});
-      expect(response).toBeInstanceOf(Error);
-    })
-    //missing tags
-    test("error out when missing tags", async () => {
-      const response = await request(app).post("/posts").send({...post, tags = null});
-      expect(response).toBeInstanceOf(Error);
-    })
-    //tags empty
-    test("error out tags is empty", async () => {
-      const response = await request(app).post("/posts").send({...post, tags = []});
+      const response = await request(app).post("/projects").send({...project, effortLevel : null});
       expect(response).toBeInstanceOf(Error);
     })
   });
+});
 
-  describe("GET /posts", () => {
-    //pull test post and verify details
+describe("GET /projects", () => {
 
-    //test filtered queries
-    //is this a 
+  const project = {
+    title: "test Title",
+    description: "test Description",
+    difficulty: "Hard",
+    effortLevel: "1 day"
+  };
+
+  const response = request(app).post("/projects").send({...project, title : 1});
+
+  //pull test post and verify details
+  describe("when retrieve a test project,", () => {
+    //set up bad data
+    //title is not string
+    test("response should return one project", async () => {
+      const 
+      expect(response.length).toEqual(1);
+      expect(response.body).toEqual({
+        title: "test Title",
+        description: "test Description",
+        difficulty: "Hard",
+        effortLevel: "1 day"
+      });
+    });
+  //test filtered queries
+  //is this a 
   })
 
-  describe("UPDATE /posts", () => {
+  /*
+  describe("UPDATE /projects", () => {
     //verify likes starts at 0
     //increment likes 
     //decrement likes
@@ -124,12 +132,29 @@ describe("POST /posts", () => {
   })
 
   describe("POST /tags", () => {
+    const tag = {
+      name : "testTag"
+    };
+
+    const techstack = {
+      name : "testTechstack"
+    };
+
     //verify Tag is created
   })
   
   describe("GET /tags", () => {
     //verify Tag is created
+    const tag = {
+      name : "testTag"
+    };
+
+    const techstack = {
+      name : "testTechstack"
+    };
+
   })
+  */
 
 })
 
