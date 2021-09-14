@@ -16,7 +16,6 @@ import Project from './Project';
 const BottomContainer = (props) => {
   return (
     <div>
-      <p>Test from Bottom Container!</p>
       <Project />
     </div>
 

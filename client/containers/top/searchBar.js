@@ -14,8 +14,8 @@ import React from 'react';
 const SearchBar = (props) => {
   return (
     <div>
-      <p>Test from SearchBar</p>
       <input type="text" placeholder="search" data-testid="search" />
+      <input type="submit" value="Search" />
     </div>
 
   )
