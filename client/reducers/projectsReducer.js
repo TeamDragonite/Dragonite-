@@ -16,10 +16,12 @@ import * as types from '../constants/actionTypes';
 const initialState = {
   //initial state here
   projectList: [],
+  searchTerm: '',
 };
 
 const projectsReducer = (state = initialState, action) => {
   let projectList;
+  let searchTerm;
 
   switch (action.type) {
     case types.GET_PROJECTS:
@@ -57,15 +59,27 @@ const projectsReducer = (state = initialState, action) => {
       projectList.push(newProject);
       return {
         ...state, projectList
-      }
+      };
     case types.DELETE_PROJECT:
       projectList = state.projectList.slice();
       projectList.filter(project => project.id !== action.payload);
       return {
         ...state, projectList
-      }
+      };
     case types.SEARCH_PROJECTS:
-      projectList = state.projectList.slice();
+      projectList = action.payload.projects;
+      searchTerm = action.payload.searchTerm;
+      return {
+        ...state, projectList, searchTerm
+      };
+    case types.FILTER_PROJECTS:
+      projectList = action.payload.projects;
+      return {
+        ...state, projectList
+      };
+    case types.UPVOTE_PROJECT:
+
+    case types.DOWNVOTE_PROJECT:
     default:
       return state;
   }
