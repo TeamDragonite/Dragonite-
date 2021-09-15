@@ -7,8 +7,7 @@ commentsController.postComment = async (req, res, next) => {
     const { text, projectId } = req.body;
     const params = [ text, projectId ];
     const postCommentQuery = `INSERT INTO comments (text,projectId) VALUES ($1,$2)`;
-    const createdComment = await pool.query(postCommentQuery, params);
-    res.locals.createdComment = createdComment.rows;
+    await pool.query(postCommentQuery, params);
     return next ();
   } catch (err) {
     console.log(`Error in CommentsController.postComment: ${err}`);
@@ -21,10 +20,24 @@ commentsController.getComments = async (req, res, next) => {
     const { projectId } = req.body;
     const params = [ projectId ];
     const getCommentsQuery = `SELECT * FROM comments WHERE projectId = $1`;
-    await pool.query(getCommentsQuery, params);
+    const comments = await pool.query(getCommentsQuery, params);
+    res.locals.comments = comments.rows;
     return next();
   } catch (err) {
     console.log(`Error in commentsController.getComments: ${err}`);
+    return next(err);
+  }
+}
+
+commentsController.deleteComment = async (req, res, next) => {
+  try {
+    const { commentId } = req.body;
+    const params = [ commentId ];
+    const deleteCommentQuery = `DELETE FROM comments WHERE id = $1`;
+    await pool.query(deleteCommentQuery, params);
+    return next();
+  } catch (err) {
+    console.log(`Error in commentsController.deleteComment: ${err}`);
     return next(err);
   }
 }

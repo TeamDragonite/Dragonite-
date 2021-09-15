@@ -11,11 +11,11 @@
 
 import React from 'react';
 
-const SearchBar = (props) => {
+const SearchBar = ({ searchProjects, searchTerm, projectList }) => {
   return (
     <div>
-      <input type="text" placeholder="search" data-testid="search" />
-      <input type="submit" value="Search" />
+      <input id="searchButton" type="text" placeholder="search" data-testid="search" onKeyUp={(e) => searchTerm = e.target.value}/>
+      <input type="submit" value="Search" onClick={() => searchProjects(searchTerm)}/>
     </div>
 
   )

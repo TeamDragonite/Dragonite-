@@ -118,27 +118,58 @@ actions.deleteProjectThunk = (projectId) => dispatch => {
 
 actions.searchProjectsThunk = (searchTerm) => dispatch => {
   //fetch request to post new project
-  fetch(`/api/projects?q=${searchTerm}`)
-    .then(res => res.json)
+  fetch(`/api/projects/search`, {
+    method: 'POST',
+    body: JSON.stringify({ searchTerm }),
+    headers: { 'Content-Type': 'application/json' },
+  })
+    .then(res => res.json())
     .then(data => {
-      dispatch(searchProjects(searchTerm, data.rows));
+      console.log('this is search data', data)
+      dispatch(searchProjects(searchTerm, data));
     })
     .catch(err => console.log('error in searchProjectThunk fetch: ', err));
 }
 
 actions.filterProjectsByTechThunk = (techList) => dispatch => {
-  //fetch request to post new project
   fetch(`/api/filterbytech`, {
     method: 'POST',
     body: JSON.stringify({ techList }),
     headers: { 'Content-Type': 'application/json' },
   })
-    .then(res => res.json)
+    .then(res => res.json())
     .then(data => {
       dispatch(filterProjectsByTech(techList, data.rows));
     })
     .catch(err => console.log('error in filterProjectThunk fetch: ', err));
 }
+
+actions.filterProjectsByDifficulty = (difficulty) => {
+  fetch(`/api/filterbydifficulty`, {
+    method: 'POST',
+    body: JSON.stringify({ difficulty }),
+    headers: { 'Content-Type': 'application/json' },
+  })
+    .then(res => res.json())
+    .then(data => {
+      dispatch(filterProjectsByDifficulty(difficulty, data.rows));
+    })
+    .catch(err => console.log('error in filterProjectThunk fetch: ', err));
+}
+
+actions.filterProjectsByEffortLevel = (effortLevel) => {
+  fetch(`/api/filterbyeffortlevel`, {
+    method: 'POST',
+    body: JSON.stringify({ effortLevel }),
+    headers: { 'Content-Type': 'application/json' },
+  })
+    .then(res => res.json())
+    .then(data => {
+      dispatch(filterProjectsByEfforLevel(effortLevel, data.rows));
+    })
+    .catch(err => console.log('error in filterProjectThunk fetch: ', err));
+}
+
 
 actions.upvoteProjectThunk = (projectId) => dispatch => {
   fetch('/api/projects/addLikes', {
@@ -175,18 +206,18 @@ actions.downvoteProjectThunk = (projectId) => dispatch => {
 actions.getCommentsThunk = (projectId) => dispatch => {
   //fetch request to post new project
   fetch(`/api/comments/${projectId}`)
-    .then(res => res.json)
+    .then(res => res.json())
     .then(data => {
       dispatch(getComments(data.rows));
     })
     .catch(err => console.log('error in getCommentsThunk fetch: ', err));
 }
 
-actions.addCommentThunk = (text, timestamp, projectId) => dispatch => {
+actions.addCommentThunk = (text, projectId) => dispatch => {
   //fetch request to post new project
   fetch('/api/comments', {
     method: 'POST',
-    body: JSON.stringify({ text, timestamp, projectId }),
+    body: JSON.stringify({ text, projectId }),
     headers: { 'Content-Type': 'application/json' },
   })
     .then(res => {
