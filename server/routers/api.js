@@ -9,6 +9,7 @@ router.get('/projects', projectsController.getProjects, (req, res) => res.status
 router.post('/projects', projectsController.postProject, (req, res) => res.status(200).json(res.locals.createdProject));
 router.put('/projects/addLikes', projectsController.addLikes, (req, res) => res.status(200).send());
 router.put('/projects/subtractLikes', projectsController.subtractLikes, (req, res) => res.status(200).send());
+router.post('/projects/search', projectsController.search, (req, res) => res.status(200).json(res.locals.searchResults));
 
 // comments routes
 router.get('/comments', commentsController.getComments, (req, res) => res.status(200).json(res.locals.comments))

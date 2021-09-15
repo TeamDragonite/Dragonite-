@@ -8,7 +8,7 @@ commentsController.postComment = async (req, res, next) => {
     const params = [ text, projectId ];
     const postCommentQuery = `INSERT INTO comments (text,projectId) VALUES ($1,$2)`;
     const createdComment = await pool.query(postCommentQuery, params);
-    res.locals.createdComment = createdComment;
+    res.locals.createdComment = createdComment.rows;
     return next ();
   } catch (err) {
     console.log(`Error in CommentsController.postComment: ${err}`);
@@ -22,7 +22,7 @@ commentsController.getComments = async (req, res, next) => {
     const params = [ projectId ];
     const getCommentsQuery = `SELECT * FROM comments WHERE projectId = $1`;
     const comments = await pool.query(getCommentsQuery, params);
-    res.locals.comments = comments;
+    res.locals.comments = comments.rows;
     return next();
   } catch (err) {
     console.log(`Error in commentsController.getComments: ${err}`);
