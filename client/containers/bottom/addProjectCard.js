@@ -36,7 +36,7 @@ class AddProjectCard extends Component {
           const effortLevel = document.querySelector('#add-project-effort').value;
           // const techs = document.querySelector('#add-project-techs').value;
           this.props.addProject(title, description, difficulty, effortLevel)
-          this.props.history.push('/');
+
         }}>
           <label htmlFor="add-project-title">Title:</label>
           <input id="add-project-title" type="text" placeholder="Title" />

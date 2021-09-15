@@ -15,7 +15,7 @@ const SearchBar = ({ searchProjects, searchTerm, projectList }) => {
   return (
     <div>
       <input id="searchButton" type="text" placeholder="search" data-testid="search" onKeyUp={(e) => searchTerm = e.target.value} />
-      <input type="submit" value="Search" onClick={() => searchProjects(searchTerm)} />
+      <input id="search-submit" type="submit" value="Search" onClick={() => searchProjects(searchTerm)} />
     </div>
 
   )
