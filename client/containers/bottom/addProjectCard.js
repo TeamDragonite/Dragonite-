@@ -26,7 +26,8 @@ const mapDispatchToProps = dispatch => ({
 class AddProjectCard extends Component {
   render() {
     return (
-      <div>
+      <div id="add-project-card">
+        <h2>Add a Project</h2>
         <form id="add-project-form" onSubmit={e => {
           e.preventDefault();
           const title = document.querySelector('#add-project-title').value;
@@ -37,7 +38,9 @@ class AddProjectCard extends Component {
           this.props.addProject(title, description, difficulty, effortLevel)
           this.props.history.push('/');
         }}>
+          <label htmlFor="add-project-title">Title:</label>
           <input id="add-project-title" type="text" placeholder="Title" />
+          <label htmlFor="add-project-description">Description:</label>
           <input id="add-project-description" type="text" placeholder="Description" />
           <label htmlFor="add-project-difficulty">Difficulty:</label>
           <select id="add-project-difficulty">

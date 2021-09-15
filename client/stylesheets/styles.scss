@@ -13,7 +13,7 @@ a:visited {
 #main-container {
   display: flex;
   flex-direction: column;
-  margin-left: 2rem;
+  
   h1 {
     font-size: 1.7rem;
   }
@@ -21,7 +21,10 @@ a:visited {
 nav {
   display:flex;
   align-items: center;
-  border-bottom: 1rem;
+  margin-left: 1rem;
+  h1 {
+    margin-left: 1rem;
+  }
   p {
     margin-right: 1rem;
   }
@@ -29,7 +32,7 @@ nav {
     margin-right: 1rem;
     padding: .7rem 0.3rem;
   border-radius: .5rem;
-  border: 1px solid #C1C8E4;
+  border: 1px solid $mainColor;
   background-color: white;
   cursor: pointer;
   }
@@ -37,7 +40,7 @@ nav {
     background-color: #aeafb3;
   color: white;
   }
-  background-color: #C1C8E4;
+  background-color: $mainColor;
 }
 
 #search-bar {
@@ -45,7 +48,8 @@ nav {
   width: 40rem;
   padding: .7rem 0.3rem;
   border-radius: .5rem;
-  border: 1px solid #C1C8E4;
+  border: 1px solid $mainColor;
+  outline: none;
 }
 #search-submit {
   margin-left: .5rem;
@@ -53,7 +57,7 @@ nav {
   outline:none;
   background-color: white;
   border-radius: .5rem;
-  border: 1px solid #C1C8E4;
+  border: 1px solid $mainColor;
   cursor:pointer;
   margin-right: 1rem;
 
@@ -65,13 +69,72 @@ nav {
 
 #bottom-container {
   margin-top: 1rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+#add-project-card {
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  form {
+    display:flex;
+    flex-direction: column;
+    
+    input {
+      width: 50rem;
+      margin-top: 1rem;
+      padding: 1rem;
+      border-radius: .5rem;
+      border: 1px solid $mainColor;
+      outline: none;
+    }
+    select {
+      width: 52rem;
+      margin-top: 1rem;
+      border-radius: .5rem;
+      padding: 1rem;
+      border: 1px solid $mainColor;
+      outline: none;
+    }
+    label {
+      margin-top: 1rem;
+    }
+    #add-project-submit {
+      width: 10rem;
+      align-self: center;
+      cursor:pointer;
+      background-color: white;
+      color: $mainColor;
+      border: 1px solid $mainColor;
+      border-radius: .5rem;
+    }
+    #add-project-submit:hover {
+      background-color: $mainColor;
+      color: white;
+    }
+  }
 }
 
 
 #project-card {
   display: flex;
   flex-direction: column;
-  margin-left: 2rem;
-  
+  margin: 10px;
+  border: none;
+  border-radius: 5px;
+  padding: 10px;
+  background-color: #f5f5f8;
+}
+#project-card p {
+  margin: 3px;
+}
+#project-attributes {
+  display: flex;
+  justify-content: space-evenly;
+}
+#comment-likes {
+  display: flex;
 }
 

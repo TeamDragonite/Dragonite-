@@ -1,8 +1,21 @@
+// #bottom-container {
+//   display: flex;
+//   justify-content: space-evenly;
+//   flex-wrap: wrap;
+// }
+
+#project-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margi: 10px;
+}
+
+#project-card p {
+  text-align: center;
+}
+
 .like-arrows {
   display: flex;
   flex-direction: column;
-}
-.like-button {
-  border: none;
-  background-color: none;
 }
