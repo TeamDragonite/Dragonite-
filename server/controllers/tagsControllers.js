@@ -12,7 +12,7 @@ tagsController.createTag = async (req, res, next) => {
     const createTagQuery = `INSERT INTO tags (techstackId, projectId) VALUES ($1,$2)`;
     const createdTag = await pool.query(createTagQuery, params);
     console.log('createdTag in tagController: ', createdTag)
-    res.locals.createdTag = createdTag;
+    res.locals.createdTag = createdTag.rows;
     return next ();
   } catch (err) {
     console.log(`Error in tagsController.createTag: ${err}`);
@@ -26,7 +26,7 @@ tagsController.getTags = async (req, res, next) => {
     console.log('in tags controller get Tag');
     const getTagsQuery = `SELECT * FROM tags`;
     const tags = await pool.query(getTagsQuery);
-    res.locals.tags = tags;
+    res.locals.tags = tags.rows;
     return next();
   } catch (err) {
     console.log(`Error in tagsController.getTags: ${err}`);

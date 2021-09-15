@@ -7,7 +7,7 @@ projectsController.getProjects = async (req, res, next) => {
   try {
     const getProjectsQuery = 'SELECT * FROM projects';
     const projects = await pool.query(getProjectsQuery);
-    res.locals.projects = projects;
+    res.locals.projects = projects.rows;
     return next ();
   } catch (err) {
     console.log(`Error in projectsController.getProjects: ${err}`);
@@ -22,7 +22,7 @@ projectsController.postProject = async (req, res, next) => {
     const params = [ title, description, difficulty, effortLevel ];
     const postProjectQuery = 'INSERT into projects (title,description,difficulty,effortLevel) values ($1,$2,$3,$4)';
     const createdProject = await pool.query(postProjectQuery, params);
-    res.locals.createdProject = createdProject;
+    res.locals.createdProject = createdProject.rows;
     return next ();
   } catch (err) {
     console.log(`Error in projectsController.postProject: ${err}`);
@@ -57,6 +57,27 @@ projectsController.subtractLikes = async (req, res, next) => {
     return next();
   } catch (err) {
     console.log(`Error in projectsController.subtractLikes: ${err}`);
+    return next(err);
+  }
+}
+
+projectsController.search = async (req, res, next) => {
+  try {
+    // receiving text string from front end
+    const { text, difficulty, effortLevel, techstack } = req.body;
+    const searchQuery = `
+      SELECT * FROM projects WHERE 
+      description LIKE '%${text}%' OR
+      title LIKE '%${text}%' OR 
+      difficulty LIKE '%${difficulty}%' OR 
+      effortLevel LIKE '%${effortLevel}%' OR
+      id IN (SELECT projectId FROM tags WHERE techstackId = (SELECT id FROM techstack WHERE name = '${techstack}'))
+      `;
+    const searchResults = await pool.query(searchQuery);
+    res.locals.searchResults = searchResults.rows;
+    return next();
+  } catch (err) {
+    console.log(`Error in projectsController.search: ${err}`);
     return next(err);
   }
 }
