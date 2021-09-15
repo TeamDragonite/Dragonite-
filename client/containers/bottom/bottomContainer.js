@@ -33,9 +33,6 @@ const mapDispatchToProps = dispatch => ({
   },
   downvoteProject: (id) => {
     dispatch(actions.downvoteProjectThunk(id))
-  },
-  addComment: () => {
-    
   }
 });
 
