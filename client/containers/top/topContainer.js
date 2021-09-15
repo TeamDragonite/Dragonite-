@@ -45,13 +45,14 @@ class TopContainer extends Component {
 
   render() {
     return (
-      <div>
+      <>
         <SearchBar searchProjects={this.props.searchProjects} searchTerm={this.props.searchTerm} projectList={this.props.projectList} />
-        <NewPost />
+
         <FilterBar filterProjectsByDifficulty={this.props.filterProjectsByDifficulty} filterProjectsByEffortLevel={this.props.filterProjectsByEffortLevel}
           filterProjectsByTech={this.props.filterProjectsByTech} filteredList={this.props.filteredList} projectList={this.props.projectList}
           isFiltered={this.props.isFiltered} difficulty={this.props.difficulty} effortLevel={this.props.effortLevel} techList={this.props.techList} />
-      </div>
+        <NewPost />
+      </>
 
     )
   }

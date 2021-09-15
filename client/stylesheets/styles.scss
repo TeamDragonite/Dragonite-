@@ -2,3 +2,76 @@
 body {
   font-family: Roboto, sans-serif;
 }
+a {
+  text-decoration: none;
+}
+
+a:visited {
+  color: black;
+}
+
+#main-container {
+  display: flex;
+  flex-direction: column;
+  margin-left: 2rem;
+  h1 {
+    font-size: 1.7rem;
+  }
+}
+nav {
+  display:flex;
+  align-items: center;
+  border-bottom: 1rem;
+  p {
+    margin-right: 1rem;
+  }
+  button {
+    margin-right: 1rem;
+    padding: .7rem 0.3rem;
+  border-radius: .5rem;
+  border: 1px solid #C1C8E4;
+  background-color: white;
+  cursor: pointer;
+  }
+  button:hover {
+    background-color: #aeafb3;
+  color: white;
+  }
+  background-color: #C1C8E4;
+}
+
+#search-bar {
+  margin-left: 1rem;
+  width: 40rem;
+  padding: .7rem 0.3rem;
+  border-radius: .5rem;
+  border: 1px solid #C1C8E4;
+}
+#search-submit {
+  margin-left: .5rem;
+  padding: .7rem .5rem;
+  outline:none;
+  background-color: white;
+  border-radius: .5rem;
+  border: 1px solid #C1C8E4;
+  cursor:pointer;
+  margin-right: 1rem;
+
+}
+#search-submit:hover {
+  background-color: #aeafb3;
+  color: white;
+}
+
+#bottom-container {
+  margin-top: 1rem;
+}
+
+
+#project-card {
+  display: flex;
+  flex-direction: column;
+  margin-left: 2rem;
+  
+}
+

@@ -13,10 +13,10 @@ import React from 'react';
 
 const SearchBar = (props) => {
   return (
-    <div>
-      <input type="text" placeholder="search" data-testid="search" />
-      <input type="submit" value="Search" />
-    </div>
+    <>
+      <input id="search-bar" type="text" placeholder="search" data-testid="search" />
+      <input id="search-submit" type="submit" value="Search" />
+    </>
 
   )
 }
