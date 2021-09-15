@@ -13,12 +13,12 @@ import React from 'react';
 
 const FilterBar = (props) => {
   return (
-    <div>
+    <>
       <p>Filter by: </p>
       <button>Difficulty</button>
       <button>Effort Level</button>
       <button>Tech</button>
-    </div>
+    </>
 
   )
 }

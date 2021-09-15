@@ -14,9 +14,9 @@ import { Link } from 'react-router-dom';
 
 const NewPost = (props) => {
   return (
-    <div>
-      <Link to='/addProject'><button>Create Project</button></Link>
-    </div>
+    <>
+      <Link to='/addProject'><button id="create-project-button">Add Project+</button></Link>
+    </>
 
   )
 }

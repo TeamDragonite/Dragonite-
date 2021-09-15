@@ -16,6 +16,7 @@ import BottomContainer from './bottom/bottomContainer';
 import AddProjectCard from './bottom/addProjectCard';
 import { Route, Switch } from 'react-router-dom';
 import actions from '../actions/actions';
+import { Link } from 'react-router-dom';
 
 const mapStateToProps = store => ({
   projectList: store.projects.projectList,
@@ -33,9 +34,10 @@ class MainContainer extends Component {
   }
   render() {
     return (
-      <div>
-        <h1>RachelJS</h1>
-        <TopContainer projectList={this.props.projectList} />
+      <div id="main-container">
+        <nav><Link to='/'><h1>Rachel.js</h1></Link>
+          <TopContainer projectList={this.props.projectList} />
+        </nav>
 
         <Switch>
           <Route exact path='/'>

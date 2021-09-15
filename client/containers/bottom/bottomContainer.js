@@ -52,7 +52,7 @@ class BottomContainer extends Component {
       if (this.props.projectList.length) {
         let slicedProjList = this.props.projectList.slice();
         slicedProjList.sort((a, b) => b.likes - a.likes);
-        slicedProjList = slicedProjList.slice(0, 10);
+        slicedProjList = slicedProjList.slice(0, 9);
         slicedProjList.forEach(proj => {
           renderList.push(<Project upvoteProject={this.props.upvoteProject} downvoteProject={this.props.downvoteProject} key={proj.id} id={proj.id} title={proj.title}
             description={proj.description} likes={proj.likes} difficulty={proj.difficulty}
@@ -63,7 +63,7 @@ class BottomContainer extends Component {
 
     }
     return (
-      <div>
+      <div id="bottom-container">
         {renderList}
       </div>
 

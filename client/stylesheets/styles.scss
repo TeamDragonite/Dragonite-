@@ -2,3 +2,152 @@
 body {
   font-family: Roboto, sans-serif;
 }
+a {
+  text-decoration: none;
+}
+
+a:visited {
+  color: black;
+}
+
+#main-container {
+  display: flex;
+  flex-direction: column;
+  
+  h1 {
+    font-size: 1.7rem;
+  }
+}
+nav {
+  display:flex;
+  align-items: center;
+  margin-left: 1rem;
+  h1 {
+    margin-left: 1rem;
+  }
+  p {
+    margin-right: 1rem;
+  }
+  button {
+    margin-right: 1rem;
+    padding: .7rem 0.3rem;
+  border-radius: .5rem;
+  border: 1px solid $mainColor;
+  background-color: white;
+  cursor: pointer;
+  }
+  button:hover {
+    background-color: #aeafb3;
+  color: white;
+  }
+  background-color: $mainColor;
+}
+
+#searchButton {
+  margin-left: 1rem;
+  width: 40rem;
+  padding: .7rem 0.3rem;
+  border-radius: .5rem;
+  border: 1px solid $mainColor;
+  outline: none;
+}
+#search-submit {
+  margin-left: .5rem;
+  padding: .7rem .5rem;
+  outline:none;
+  background-color: white;
+  border-radius: .5rem;
+  border: 1px solid $mainColor;
+  cursor:pointer;
+  margin-right: 1rem;
+
+}
+#search-submit:hover {
+  background-color: #aeafb3;
+  color: white;
+}
+
+#bottom-container {
+  margin-top: 1rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+#add-project-card {
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  form {
+    display:flex;
+    flex-direction: column;
+    
+    input {
+      width: 50rem;
+      margin-top: 1rem;
+      padding: 1rem;
+      border-radius: .5rem;
+      border: 1px solid $mainColor;
+      outline: none;
+    }
+    select {
+      width: 52rem;
+      margin-top: 1rem;
+      border-radius: .5rem;
+      padding: 1rem;
+      border: 1px solid $mainColor;
+      outline: none;
+    }
+    label {
+      margin-top: 1rem;
+    }
+    #add-project-submit {
+      width: 10rem;
+      align-self: center;
+      cursor:pointer;
+      background-color: white;
+      color: $mainColor;
+      border: 1px solid $mainColor;
+      border-radius: .5rem;
+    }
+    #add-project-submit:hover {
+      background-color: $mainColor;
+      color: white;
+    }
+  }
+}
+
+
+#project-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin: 10px;
+  border: none;
+  border-radius: 5px;
+  padding: 10px;
+  background-color: #ebe3e3;
+  box-shadow: 1px 1px 5px rgba(165, 184, 219, 0.915)
+}
+#project-card h3 {
+  text-align: center;
+  
+}
+#project-card p {
+  padding: 5px;
+  font-size: 14px;
+  background-color: #ffffff;
+  box-shadow: 1px 1px 5px rgba(200, 212, 236, 0.915)
+}
+
+#project-attributes {
+  display: flex;
+  justify-content: space-between;
+  margin: 25px 0px;
+  background-color: #ebe3e3;
+}
+#arrows {
+  display: flex;
+  align-items: center;
+}
+
