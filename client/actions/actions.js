@@ -208,11 +208,11 @@ actions.getCommentsThunk = (projectId) => dispatch => {
     .catch(err => console.log('error in getCommentsThunk fetch: ', err));
 }
 
-actions.addCommentThunk = (text, timestamp, projectId) => dispatch => {
+actions.addCommentThunk = (text, projectId) => dispatch => {
   //fetch request to post new project
   fetch('/api/comments', {
     method: 'POST',
-    body: JSON.stringify({ text, timestamp, projectId }),
+    body: JSON.stringify({ text, projectId }),
     headers: { 'Content-Type': 'application/json' },
   })
     .then(res => {

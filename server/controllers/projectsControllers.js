@@ -30,6 +30,25 @@ projectsController.postProject = async (req, res, next) => {
   }
 }
 
+// delete project 
+projectsController.deleteProject = async (req, res, next) => {
+  try {
+    const { projectId } = req.body;
+    const params = [projectId];
+    // first delete tags and comments associated with project, then delete project
+    const deleteTagsQuery = 'DELETE FROM tags WHERE projectId = $1';
+    await pool.query(deleteTagsQuery, params);
+    const deleteCommentsQuery = 'DELETE FROM comments WHERE projectId = $1';
+    await pool.query(deleteCommentsQuery, params);
+    const deleteProjectQuery = 'DELETE FROM projects WHERE id = $1';
+    await pool.query(deleteProjectQuery, params);
+    return next();
+  } catch (err) {
+    console.log(`Error in projectsController.deleteProject: ${err}`);
+    return next(err);
+  }
+}
+
 // add likes
 projectsController.addLikes = async (req, res, next) => {
   try {
