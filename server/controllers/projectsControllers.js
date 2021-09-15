@@ -8,7 +8,7 @@ projectsController.getProjects = async (req, res, next) => {
     const getProjectsQuery = 'SELECT * FROM projects';
     const projects = await pool.query(getProjectsQuery);
     res.locals.projects = projects.rows;
-    return next ();
+    return next();
   } catch (err) {
     console.log(`Error in projectsController.getProjects: ${err}`);
     return next(err);
@@ -19,11 +19,11 @@ projectsController.getProjects = async (req, res, next) => {
 projectsController.postProject = async (req, res, next) => {
   try {
     const { title, description, difficulty, effortLevel } = req.body;
-    const params = [ title, description, difficulty, effortLevel ];
+    const params = [title, description, difficulty, effortLevel];
     const postProjectQuery = 'INSERT into projects (title,description,difficulty,effortLevel) values ($1,$2,$3,$4)';
     const createdProject = await pool.query(postProjectQuery, params);
     res.locals.createdProject = createdProject.rows;
-    return next ();
+    return next();
   } catch (err) {
     console.log(`Error in projectsController.postProject: ${err}`);
     return next(err);
@@ -34,8 +34,8 @@ projectsController.postProject = async (req, res, next) => {
 projectsController.addLikes = async (req, res, next) => {
   try {
     // receiving project id from front end
-    const { id } = req.body;
-    const params = [ id ];
+    const { projectId } = req.body;
+    const params = [projectId];
     // find that project and increment its like count
     const addLikesQuery = 'UPDATE projects SET likes = likes + 1 WHERE id = $1';
     await pool.query(addLikesQuery, params);
@@ -49,8 +49,8 @@ projectsController.addLikes = async (req, res, next) => {
 projectsController.subtractLikes = async (req, res, next) => {
   try {
     // receiving project id from front end
-    const { id } = req.body;
-    const params = [ id ];
+    const { projectId } = req.body;
+    const params = [projectId];
     // find that project and increment its like count
     const subtractLikesQuery = 'UPDATE projects SET likes = likes - 1 WHERE id = $1';
     await pool.query(subtractLikesQuery, params);

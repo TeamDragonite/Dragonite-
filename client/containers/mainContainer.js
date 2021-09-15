@@ -34,7 +34,7 @@ class MainContainer extends Component {
   render() {
     return (
       <div>
-        <h1>Unnamed Dragonite App</h1>
+        <h1>RachelJS</h1>
         <TopContainer projectList={this.props.projectList} />
 
         <Switch>

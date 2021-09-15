@@ -11,18 +11,23 @@
 
 import React from 'react';
 
-const Project = ({ score, title, description, difficulty, effortLevel, techs }) => {
+const Project = ({ likes, title, description, difficulty, effortLevel, upvoteProject, downvoteProject, id, techs }) => {
+
   return (
     <div>
-      <button>Upvote</button>
-      <button>Downvote</button>
-      <p>{score}</p>
+      <button onClick={() => {
+        const projId = id;
+        // console.log(projId);
+        upvoteProject(projId)
+      }}>Upvote</button>
+      <button onClick={() => downvoteProject(id)}>Downvote</button>
+      <p>{likes}</p>
       <h3>{title}</h3>
       <p>{description}</p>
       <button>Comment</button>
       <p>{difficulty}</p>
       <p>{effortLevel}</p>
-      <p>{techs}</p>
+      {/* <p>{techs}</p> */}
     </div>
 
   )

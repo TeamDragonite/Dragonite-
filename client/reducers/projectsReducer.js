@@ -38,6 +38,7 @@ const projectsReducer = (state = initialState, action) => {
   switch (action.type) {
     case types.GET_PROJECTS:
       const projects = action.payload;
+
       projectList = state.projectList.slice();
 
       //push markets on market list
@@ -46,10 +47,10 @@ const projectsReducer = (state = initialState, action) => {
           id: project.id,
           title: project.title,
           description: project.description,
-          score: project.score,
+          likes: project.likes,
           difficulty: project.difficulty,
-          effortLevel: project.effortLevel,
-          techs: project.techs
+          effortlevel: project.effortlevel,
+          // techs: project.techs
         }
         projectList.push(newProject);
       })
@@ -62,10 +63,10 @@ const projectsReducer = (state = initialState, action) => {
         id: action.payload.id,
         title: action.payload.title,
         description: action.payload.description,
-        score: action.payload.score,
+        likes: action.payload.likes,
         difficulty: action.payload.difficulty,
-        effortLevel: action.payload.effortLevel,
-        techs: action.payload.techs
+        effortlevel: action.payload.effortlevel,
+        // techs: action.payload.techs
       }
       projectList = state.projectList.slice();
       projectList.push(newProject);
@@ -94,34 +95,34 @@ const projectsReducer = (state = initialState, action) => {
     case types.FILTER_PROJECTS_BY_DIFFICULTY:
       projectList = state.projectList.slice();
       if (!isFiltered) {
-        filteredList = projectList.filter(project => project.difficulty === action.payload.difficulty);
+        filteredList = projectList.filter(project => project.difficulty === action.payload);
       } else {
         filteredList = state.filteredList.slice();
-        filteredList = filteredList.filter(project => project.difficulty === action.payload.difficulty);
+        filteredList = filteredList.filter(project => project.difficulty === action.payload);
       }
       isFiltered = true;
-      difficulty = action.payload.difficulty;
+      difficulty = action.payload;
       return {
         ...state, difficulty, isFiltered, filteredList
       };
     case types.FILTER_PROJECTS_BY_EFFORT_LEVEL:
       projectList = state.projectList.slice();
       if (!isFiltered) {
-        filteredList = projectList.filter(project => project.effortLevel === action.payload.effortLevel);
+        filteredList = projectList.filter(project => project.effortLevel === action.payload);
       } else {
         filteredList = state.filteredList.slice();
-        filteredList = filteredList.filter(project => project.effortLevel === action.payload.effortLevel);
+        filteredList = filteredList.filter(project => project.effortLevel === action.payload);
       }
       isFiltered = true;
-      effortLevel = action.payload.effortLevel;
+      effortLevel = action.payload;
       return {
         ...state, effortLevel, isFiltered, filteredList
       };
     case types.UPVOTE_PROJECT:
       projectList = state.projectList.slice();
       projectList.forEach(project => {
-        if (action.payload.projectId === project.id) {
-          project.score++;
+        if (action.payload === project.id) {
+          project.likes++;
         }
       })
       return {
@@ -130,8 +131,8 @@ const projectsReducer = (state = initialState, action) => {
     case types.DOWNVOTE_PROJECT:
       projectList = state.projectList.slice();
       projectList.forEach(project => {
-        if (action.payload.projectId === project.id) {
-          project.score--;
+        if (action.payload === project.id) {
+          project.likes--;
         }
       })
       return {

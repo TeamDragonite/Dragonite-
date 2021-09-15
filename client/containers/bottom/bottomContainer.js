@@ -28,11 +28,11 @@ const mapDispatchToProps = dispatch => ({
   getProjects: () => {
     dispatch(actions.getProjectThunk())
   },
-  upvoteProject: (e) => {
-    dispatch(actions.upvoteProjectThunk(e.target.id))
+  upvoteProject: (id) => {
+    dispatch(actions.upvoteProjectThunk(id))
   },
-  downvoteProject: (e) => {
-    dispatch(actions.downvoteProjectThunk(e.target.id))
+  downvoteProject: (id) => {
+    dispatch(actions.downvoteProjectThunk(id))
   }
 });
 
@@ -44,22 +44,23 @@ class BottomContainer extends Component {
     if (this.props.isFiltered) {
       this.props.filteredList.forEach(proj => {
         renderList.push(<Project upvoteProject={this.props.upvoteProject} downvoteProject={this.props.downvoteProject} key={proj.id} id={proj.id} title={proj.title}
-          description={proj.description} score={proj.score} difficulty={proj.difficulty}
-          effortLevel={proj.effortLevel}
-          techs={proj.techs} />)
+          description={proj.description} likes={proj.likes} difficulty={proj.difficulty}
+          effortLevel={proj.effortlevel}
+        />)
       })
     } else {
       if (this.props.projectList.length) {
         let slicedProjList = this.props.projectList.slice();
-        slicedProjList.sort((a, b) => a.score - b.score);
+        slicedProjList.sort((a, b) => b.likes - a.likes);
         slicedProjList = slicedProjList.slice(0, 10);
-        this.props.slicedProjList.forEach(proj => {
+        slicedProjList.forEach(proj => {
           renderList.push(<Project upvoteProject={this.props.upvoteProject} downvoteProject={this.props.downvoteProject} key={proj.id} id={proj.id} title={proj.title}
-            description={proj.description} score={proj.score} difficulty={proj.difficulty}
-            effortLevel={proj.effortLevel}
-            techs={proj.techs} />)
+            description={proj.description} likes={proj.likes} difficulty={proj.difficulty}
+            effortLevel={proj.effortlevel}
+          />)
         })
       }
+
     }
     return (
       <div>
