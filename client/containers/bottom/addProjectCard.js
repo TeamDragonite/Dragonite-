@@ -24,6 +24,8 @@ const mapDispatchToProps = dispatch => ({
 });
 
 class AddProjectCard extends Component {
+
+
   render() {
     return (
       <div id="add-project-card">
