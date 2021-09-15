@@ -7,9 +7,8 @@ commentsController.postComment = async (req, res, next) => {
     const { text, projectId } = req.body;
     const params = [text, projectId];
     const postCommentQuery = `INSERT INTO comments (text,projectId) VALUES ($1,$2)`;
-    const createdComment = await pool.query(postCommentQuery, params);
-    res.locals.createdComment = createdComment.rows;
-    return next();
+    await pool.query(postCommentQuery, params);
+    return next ();
   } catch (err) {
     console.log(`Error in CommentsController.postComment: ${err}`);
     return next(err);
@@ -33,7 +32,7 @@ commentsController.getComments = async (req, res, next) => {
 commentsController.deleteComment = async (req, res, next) => {
   try {
     const { commentId } = req.body;
-    const params = [commentId];
+    const params = [ commentId ];
     const deleteCommentQuery = `DELETE FROM comments WHERE id = $1`;
     await pool.query(deleteCommentQuery, params);
     return next();
