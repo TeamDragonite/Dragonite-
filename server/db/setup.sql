@@ -31,4 +31,4 @@ CREATE TABLE IF NOT EXISTS tags (
   id SERIAL PRIMARY KEY,
   projectId integer REFERENCES projects(id) NOT NULL,
   techstackId integer REFERENCES techstack(id) NOT NULL
-)
+);
