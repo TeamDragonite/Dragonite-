@@ -27,8 +27,8 @@ const mapStateToProps = store => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  searchProjects: (e) => {
-    dispatch(actions.searchProjectsThunk(e.target.value))
+  searchProjects: (searchTerm) => {
+    dispatch(actions.searchProjectsThunk(searchTerm))
   },
   filterProjectsByDifficulty: (e) => {
     dispatch(actions.filterProjectsByDifficulty(e.target.value))

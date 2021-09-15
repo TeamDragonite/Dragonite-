@@ -21,8 +21,7 @@ projectsController.postProject = async (req, res, next) => {
     const { title, description, difficulty, effortLevel } = req.body;
     const params = [title, description, difficulty, effortLevel];
     const postProjectQuery = 'INSERT into projects (title,description,difficulty,effortLevel) values ($1,$2,$3,$4)';
-    const createdProject = await pool.query(postProjectQuery, params);
-    res.locals.createdProject = createdProject.rows;
+    await pool.query(postProjectQuery, params);
     return next();
   } catch (err) {
     console.log(`Error in projectsController.postProject: ${err}`);
@@ -34,7 +33,7 @@ projectsController.postProject = async (req, res, next) => {
 projectsController.deleteProject = async (req, res, next) => {
   try {
     const { projectId } = req.body;
-    const params = [projectId];
+    const params = [ projectId ];
     // first delete tags and comments associated with project, then delete project
     const deleteTagsQuery = 'DELETE FROM tags WHERE projectId = $1';
     await pool.query(deleteTagsQuery, params);

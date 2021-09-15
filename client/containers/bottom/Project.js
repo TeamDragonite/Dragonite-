@@ -15,11 +15,7 @@ const Project = ({ likes, title, description, difficulty, effortLevel, upvotePro
 
   return (
     <div>
-      <button onClick={() => {
-        const projId = id;
-        // console.log(projId);
-        upvoteProject(projId)
-      }}>Upvote</button>
+      <button onClick={() => upvoteProject(id)}>Upvote</button>
       <button onClick={() => downvoteProject(id)}>Downvote</button>
       <p>{likes}</p>
       <h3>{title}</h3>
