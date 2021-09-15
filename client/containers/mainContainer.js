@@ -9,31 +9,47 @@
  * ************************************
  */
 
-import React from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import TopContainer from './top/topContainer';
 import BottomContainer from './bottom/bottomContainer';
 import AddProjectCard from './bottom/addProjectCard';
 import { Route, Switch } from 'react-router-dom';
+import actions from '../actions/actions';
 
-const MainContainer = (props) => {
-  return (
-    <div>
-      <h1>Unnamed Dragonite App</h1>
-      <TopContainer />
+const mapStateToProps = store => ({
+  projectList: store.projects.projectList,
+});
 
-      <Switch>
-        <Route exact path='/'>
-          <BottomContainer />
-        </Route>
-        <Route exact path='/addproject'>
-          <AddProjectCard />
-        </Route>
-      </Switch>
+const mapDispatchToProps = dispatch => ({
+  getProjects: () => {
+    dispatch(actions.getProjectThunk())
+  },
+});
 
-    </div>
+class MainContainer extends Component {
+  componentDidMount() {
+    this.props.getProjects();
+  }
+  render() {
+    return (
+      <div>
+        <h1>RachelJS</h1>
+        <TopContainer projectList={this.props.projectList} />
 
-  )
+        <Switch>
+          <Route exact path='/'>
+            <BottomContainer projectList={this.props.projectList} />
+          </Route>
+          <Route exact path='/addproject'>
+            <AddProjectCard projectList={this.props.projectList} />
+          </Route>
+        </Switch>
+
+      </div>
+
+    )
+  }
 }
 
-export default MainContainer;
+export default connect(mapStateToProps, mapDispatchToProps)(MainContainer);
