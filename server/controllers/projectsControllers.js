@@ -21,8 +21,7 @@ projectsController.postProject = async (req, res, next) => {
     const { title, description, difficulty, effortLevel } = req.body;
     const params = [ title, description, difficulty, effortLevel ];
     const postProjectQuery = 'INSERT into projects (title,description,difficulty,effortLevel) values ($1,$2,$3,$4)';
-    const createdProject = await pool.query(postProjectQuery, params);
-    res.locals.createdProject = createdProject.rows;
+    await pool.query(postProjectQuery, params);
     return next ();
   } catch (err) {
     console.log(`Error in projectsController.postProject: ${err}`);
@@ -63,7 +62,8 @@ projectsController.subtractLikes = async (req, res, next) => {
 
 projectsController.search = async (req, res, next) => {
   try {
-    // receiving text string from front end
+    // search is currently case-sensitive
+    // returns OR combinations - cannot return AND currently because of null variable values
     const { text, difficulty, effortLevel, techstack } = req.body;
     const searchQuery = `
       SELECT * FROM projects WHERE 

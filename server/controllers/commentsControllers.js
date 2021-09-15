@@ -21,8 +21,7 @@ commentsController.getComments = async (req, res, next) => {
     const { projectId } = req.body;
     const params = [ projectId ];
     const getCommentsQuery = `SELECT * FROM comments WHERE projectId = $1`;
-    const comments = await pool.query(getCommentsQuery, params);
-    res.locals.comments = comments.rows;
+    await pool.query(getCommentsQuery, params);
     return next();
   } catch (err) {
     console.log(`Error in commentsController.getComments: ${err}`);

@@ -6,18 +6,18 @@ const tagsController = require('../controllers/tagsControllers');
 
 // posts routes
 router.get('/projects', projectsController.getProjects, (req, res) => res.status(200).json(res.locals.projects));
-router.post('/projects', projectsController.postProject, (req, res) => res.status(200).json(res.locals.createdProject));
+router.post('/projects', projectsController.postProject, (req, res) => res.status(200).send());
 router.put('/projects/addLikes', projectsController.addLikes, (req, res) => res.status(200).send());
 router.put('/projects/subtractLikes', projectsController.subtractLikes, (req, res) => res.status(200).send());
 router.post('/projects/search', projectsController.search, (req, res) => res.status(200).json(res.locals.searchResults));
 
 // comments routes
 router.get('/comments', commentsController.getComments, (req, res) => res.status(200).json(res.locals.comments))
-router.post('/comments', commentsController.postComment, (req, res) => res.status(200).json(res.locals.createdComment));
+router.post('/comments', commentsController.postComment, (req, res) => res.status(200).send());
 
 // tags routes
 router.get('/tags', tagsController.getTags, (req, res) => res.status(200).json(res.locals.tags));
-router.post('/tags', tagsController.createTag, (req, res) => res.status(200).json(res.locals.createdTag));
+router.post('/tags', tagsController.createTag, (req, res) => res.status(200).send());
 
 
 module.exports = router;
