@@ -35,7 +35,22 @@ const commentsReducer = (state = initialState, action) => {
         ...state,
         commentList
       };
-    //push markets on market list
+    case types.ADD_COMMENT:
+      commentList = state.commentList.slice()
+      const newComment = {
+        id: action.payload.id,
+        text: action.payload.text
+      }
+      commentList.push(newComment);
+      return {
+        ...state, commentList
+      }
+    case types.DELETE_COMMENT:
+      commentList = state.commentList.slice();
+      commentList.filter(comment => comment.id !== action.payload);
+      return {
+        ...state, commentList
+      };
     default:
       return state;
   }
