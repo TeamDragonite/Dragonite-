@@ -140,6 +140,32 @@ actions.filterProjectsByTechThunk = (techList) => dispatch => {
     .catch(err => console.log('error in filterProjectThunk fetch: ', err));
 }
 
+actions.filterProjectsByDifficulty = (difficulty) => {
+  fetch(`/api/filterbydifficulty`, {
+    method: 'POST',
+    body: JSON.stringify({ difficulty }),
+    headers: { 'Content-Type': 'application/json' },
+  })
+    .then(res => res.json)
+    .then(data => {
+      dispatch(filterProjectsByDifficulty(difficulty, data.rows));
+    })
+    .catch(err => console.log('error in filterProjectThunk fetch: ', err));
+}
+
+actions.filterProjectsByEffortLevel = (effortLevel) => {
+  fetch(`/api/filterbyeffortlevel`, {
+    method: 'POST',
+    body: JSON.stringify({ effortLevel }),
+    headers: { 'Content-Type': 'application/json' },
+  })
+    .then(res => res.json)
+    .then(data => {
+      dispatch(filterProjectsByEfforLevel(effortLevel, data.rows));
+    })
+    .catch(err => console.log('error in filterProjectThunk fetch: ', err));
+}
+
 actions.upvoteProjectThunk = (projectId) => dispatch => {
   fetch('/api/projects/addLikes', {
     method: 'PUT',
