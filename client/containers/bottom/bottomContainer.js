@@ -2,7 +2,7 @@
  * ************************************
  *
  * @module  BottomContainer
- * @author
+ * @author  rjpatt
  * @date
  * @description stateful component that renders other containers
  *
@@ -71,4 +71,4 @@ class BottomContainer extends Component {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(BottomContainer);;
+export default connect(mapStateToProps, mapDispatchToProps)(BottomContainer);
